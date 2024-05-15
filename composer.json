@@ -3,6 +3,8 @@
     "license": "Apache-2.0",
     "require": {
         "php": "^8.2",
+        "ext-libxml": "*",
+        "ext-soap": "*",
         "alibabacloud/aliyun-log-php-sdk": "^0.6.3",
         "aliyuncs/oss-sdk-php": "^2.7",
         "endroid/qr-code": "^5.0",

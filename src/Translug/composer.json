@@ -1,0 +1,26 @@
+{
+    "name": "juling/laravel-translug",
+    "description": "Translate Chinese And Then Make It Sluggable",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Juling\\Translug\\": "src/"
+        },
+        "files": [
+            "src/helpers/functions.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Juling\\Translug\\TranslugServiceProvider"
+            ],
+            "aliases": {
+                "Translug": "Juling\\Translug\\TranslugFacade"
+            }
+        }
+    }
+}
