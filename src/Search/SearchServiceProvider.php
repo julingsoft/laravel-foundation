@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Juling\Search;
 
 use Exception;
-use Elasticsearch\ClientBuilder;
+use Elastic\Elasticsearch\ClientBuilder;
 use Illuminate\Support\ServiceProvider;
 use Juling\Search\Engines\ElasticsearchEngine;
 use Laravel\Scout\EngineManager;
