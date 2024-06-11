@@ -14,9 +14,9 @@ use Juling\Foundation\Exceptions\CustomException;
 abstract class CommonService implements CommonServiceInterface
 {
     /**
-     * 插入记录并返回 ID 值
+     * 插入记录并返回 主键 值
      */
-    public function insertGetId(array $entity): int
+    public function insertGetId(array $entity): mixed
     {
         return $this->getRepository()->save($entity);
     }
@@ -57,9 +57,9 @@ abstract class CommonService implements CommonServiceInterface
     }
 
     /**
-     * 根据 ID 删除
+     * 根据 主键 删除
      */
-    public function removeById(int $id): bool
+    public function removeById(mixed $id): bool
     {
         return $this->getRepository()->deleteById($id);
     }
@@ -77,7 +77,7 @@ abstract class CommonService implements CommonServiceInterface
     }
 
     /**
-     * 删除（根据ID 批量删除）
+     * 删除（根据 主键 批量删除）
      */
     public function removeByIds(array $ids): bool
     {
@@ -85,9 +85,9 @@ abstract class CommonService implements CommonServiceInterface
     }
 
     /**
-     * 根据 ID 选择修改
+     * 根据 主键 选择修改
      */
-    public function updateById(array $entity, int $id): bool
+    public function updateById(array $entity, mixed $id): bool
     {
         $affectedRow = $this->getRepository()->updateById($entity, $id);
 
@@ -119,17 +119,17 @@ abstract class CommonService implements CommonServiceInterface
     }
 
     /**
-     * 根据 ID 查询
+     * 根据 主键 查询
      */
-    public function getOneById(int $id): array
+    public function getOneById(mixed $id): array
     {
         return $this->getRepository()->findById($id);
     }
 
     /**
-     * 查询（根据ID 批量查询）
+     * 查询（根据 主键 批量查询）
      */
-    public function getListByIds(array $ids, string $order = 'id', string $sort = 'desc'): array
+    public function getListByIds(array $ids, string $order = '', string $sort = 'desc'): array
     {
         return $this->getRepository()->findAllByIds($ids, $order, $sort);
     }
@@ -137,7 +137,7 @@ abstract class CommonService implements CommonServiceInterface
     /**
      * 根据条件，查询一条记录
      */
-    public function getOne(array $condition = [], string $order = 'id', string $sort = 'desc'): array
+    public function getOne(array $condition = [], string $order = '', string $sort = 'desc'): array
     {
         return $this->getRepository()->find($condition, $order, $sort);
     }
@@ -169,7 +169,7 @@ abstract class CommonService implements CommonServiceInterface
     /**
      * 查询列表
      */
-    public function getList(array $condition = [], string $order = 'id', string $sort = 'desc'): array
+    public function getList(array $condition = [], string $order = '', string $sort = 'desc'): array
     {
         return $this->getRepository()->findAll($condition, $order, $sort);
     }
@@ -177,7 +177,7 @@ abstract class CommonService implements CommonServiceInterface
     /**
      * 分页查询列表
      */
-    public function page(array $condition = [], int $page = 1, int $perPage = 20, string $order = 'id', string $sort = 'desc'): array
+    public function page(array $condition = [], int $page = 1, int $perPage = 20, string $order = '', string $sort = 'desc'): array
     {
         return $this->getRepository()->page($condition, $page, $perPage, $order, $sort);
     }

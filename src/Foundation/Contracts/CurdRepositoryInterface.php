@@ -9,7 +9,7 @@ interface CurdRepositoryInterface
     /**
      * 保存给定的实体数据
      */
-    public function save(array $data): int;
+    public function save(array $data): mixed;
 
     /**
      * 保存给定的实体数据数组
@@ -17,9 +17,9 @@ interface CurdRepositoryInterface
     public function saveAll(array $data): bool;
 
     /**
-     * 根据实体的id检索实体
+     * 根据实体的 主键 检索实体
      */
-    public function findById(int $id): array;
+    public function findById(mixed $id): array;
 
     /**
      * 根据条件检索实体
@@ -37,9 +37,9 @@ interface CurdRepositoryInterface
     public function pluck(string $field, array $condition): array;
 
     /**
-     * 返回具有给定id的实体是否存在
+     * 返回具有给定 主键 的实体是否存在
      */
-    public function existsById(int $id): bool;
+    public function existsById(mixed $id): bool;
 
     /**
      * 返回该类型的所有实例
@@ -47,7 +47,7 @@ interface CurdRepositoryInterface
     public function findAll(array $condition, string $order, string $sort): array;
 
     /**
-     * 返回具有给定id类型的所有实例
+     * 返回具有给定 主键 类型的所有实例
      */
     public function findAllByIds(array $ids, string $order, string $sort): array;
 
@@ -57,9 +57,9 @@ interface CurdRepositoryInterface
     public function count(array $condition): int;
 
     /**
-     * 删除具有给定id的实体
+     * 删除具有给定 主键 的实体
      */
-    public function deleteById(int $id): bool;
+    public function deleteById(mixed $id): bool;
 
     /**
      * 删除给定条件的实体
@@ -67,7 +67,7 @@ interface CurdRepositoryInterface
     public function delete(array $condition): bool;
 
     /**
-     * 删除具有给定id类型的所有实例
+     * 删除具有给定 主键 类型的所有实例
      */
     public function deleteAllByIds(array $ids): bool;
 
@@ -77,12 +77,17 @@ interface CurdRepositoryInterface
     public function page(array $condition, int $page, int $perPage, string $order, string $sort): array;
 
     /**
-     * 按ID更新数据
+     * 按 主键 更新数据
      */
-    public function updateById(array $data, int $id): int;
+    public function updateById(array $data, mixed $id): int;
 
     /**
      * 按条件更新数据
      */
     public function update(array $data, array $condition): int;
+
+    /**
+     * 获取主键名
+     */
+    public function getPrimaryKey(): string;
 }

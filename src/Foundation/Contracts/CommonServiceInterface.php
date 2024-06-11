@@ -9,9 +9,9 @@ interface CommonServiceInterface
     const DEFAULT_BATCH_SIZE = 1000;
 
     /**
-     * 插入记录并返回 ID 值
+     * 插入记录并返回 主键 值
      */
-    public function insertGetId(array $entity): int;
+    public function insertGetId(array $entity): mixed;
 
     /**
      * 插入一条记录
@@ -29,9 +29,9 @@ interface CommonServiceInterface
     public function saveOrUpdateBatch(array $dataSet, int $batchSize = self::DEFAULT_BATCH_SIZE): bool;
 
     /**
-     * 根据 ID 删除
+     * 根据 主键 删除
      */
-    public function removeById(int $id): bool;
+    public function removeById(mixed $id): bool;
 
     /**
      * 根据条件，删除记录
@@ -39,14 +39,14 @@ interface CommonServiceInterface
     public function remove(array $condition): bool;
 
     /**
-     * 删除（根据ID 批量删除）
+     * 删除（根据 主键 批量删除）
      */
     public function removeByIds(array $ids): bool;
 
     /**
-     * 根据 ID 选择修改
+     * 根据 主键 选择修改
      */
-    public function updateById(array $entity, int $id): bool;
+    public function updateById(array $entity, mixed $id): bool;
 
     /**
      * 根据条件，更新记录
@@ -59,19 +59,19 @@ interface CommonServiceInterface
     public function saveOrUpdate(array $entity): bool;
 
     /**
-     * 根据 ID 查询
+     * 根据 主键 查询
      */
-    public function getOneById(int $id): array;
+    public function getOneById(mixed $id): array;
 
     /**
-     * 查询（根据ID 批量查询）
+     * 查询（根据 主键 批量查询）
      */
-    public function getListByIds(array $ids, string $order, string $sort): array;
+    public function getListByIds(array $ids, string $order = '', string $sort = 'desc'): array;
 
     /**
      * 根据条件，查询一条记录
      */
-    public function getOne(array $condition, string $order, string $sort): array;
+    public function getOne(array $condition, string $order = '', string $sort = 'desc'): array;
 
     /**
      * 查询某个字段的值
@@ -91,10 +91,10 @@ interface CommonServiceInterface
     /**
      * 查询列表
      */
-    public function getList(array $condition, string $order, string $sort): array;
+    public function getList(array $condition, string $order = '', string $sort = 'desc'): array;
 
     /**
      * 分页查询列表
      */
-    public function page(array $condition, int $page, int $perPage, string $order, string $sort): array;
+    public function page(array $condition, int $page, int $perPage = 20, string $order = '', string $sort = 'desc'): array;
 }
