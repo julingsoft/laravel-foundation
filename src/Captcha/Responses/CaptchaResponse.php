@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Juling\Captcha\Responses\Common;
+namespace Juling\Captcha\Responses;
 
 use Juling\Foundation\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
