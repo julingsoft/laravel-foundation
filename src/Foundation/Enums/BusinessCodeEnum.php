@@ -14,47 +14,62 @@ enum BusinessCodeEnum: int implements EnumMethodInterface
     use EnumMethods;
 
     /**
-     * 查询失败
+     * 查询列表错误
      */
     case QUERY_ERROR = 10001;
+    
+    /**
+     * 查询数据不存在
+     */
+    case NOT_FOUND = 10002;
 
     /**
-     * 新增失败
+     * 新增数据失败
      */
-    case CREATE_ERROR = 10002;
+    case CREATE_FAIL = 10003;
 
     /**
-     * 更新失败
+     * 新增数据错误
      */
-    case UPDATE_ERROR = 10003;
+    case CREATE_ERROR = 10004;
 
     /**
-     * 删除失败
+     * 获取详情错误
      */
-    case DESTROY_ERROR = 10004;
+    case SHOW_ERROR = 10005;
 
     /**
-     * 数据未找到
+     * 更新数据失败
      */
-    case DATA_NOT_FOUND = 10101;
+    case UPDATE_FAIL = 10006;
+
+    /**
+     * 更新数据错误
+     */
+    case UPDATE_ERROR = 10007;
+
+    /**
+     * 删除数据失败
+     */
+    case DESTROY_FAIL = 10008;
+
+    /**
+     * 删除数据错误
+     */
+    case DESTROY_ERROR = 10009;
 
     /**
      * 数据已存在
      */
-    case DATA_EXIST = 10102;
+    case DATA_EXIST = 10010;
 
     /**
      * 数据访问错误
      */
-    case DATA_ACCESS_ERROR = 10103;
-
-    /**
-     * 业务错误
-     */
-    case BUSINESS_ERROR = 10104;
+    case ACCESS_ERROR = 10011;
 
     /**
      * 权限拒绝
      */
-    case PERMISSION_DENIED = 10201;
+    case PERMISSION_DENIED = 10012;
 }
