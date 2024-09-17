@@ -44,7 +44,6 @@
                 "Juling\\Excel\\ExcelServiceProvider",
                 "Juling\\Filesystem\\FilesystemServiceProvider",
                 "Juling\\Flowable\\FlowableServiceProvider",
-                "Juling\\Foundation\\FoundationServiceProvider",
                 "Juling\\Image\\ImageServiceProvider",
                 "Juling\\IP\\IPServiceProvider",
                 "Juling\\Monitor\\MonitorServiceProvider",
