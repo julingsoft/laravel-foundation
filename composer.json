@@ -28,7 +28,32 @@
     },
     "autoload": {
         "psr-4": {
-            "Juling\\": "src/"
+            "Juling\\Auth\\": "auth/src/",
+            "Juling\\Captcha\\": "captcha/src/",
+            "Juling\\Database\\": "database/src/",
+            "Juling\\DataPermission\\": "data-permission/src/",
+            "Juling\\Excel\\": "excel/src/",
+            "Juling\\Filesystem\\": "filesystem/src/",
+            "Juling\\Flowable\\": "flowable/src/",
+            "Juling\\Image\\": "image/src/",
+            "Juling\\IP\\": "ip/src/",
+            "Juling\\Monitor\\": "monitor/src/",
+            "Juling\\OperateLog\\": "operate-log/src/",
+            "Juling\\Pay\\": "pay/src/",
+            "Juling\\Pinyin\\": "pinyin/src/",
+            "Juling\\Protection\\": "potection/src/",
+            "Juling\\Pusher\\": "pusher/src/",
+            "Juling\\QrCode\\": "qr-code/src/",
+            "Juling\\Region\\": "region/src/",
+            "Juling\\Search\\": "search/src/",
+            "Juling\\Shemss\\": "shemss/src/",
+            "Juling\\Sms\\": "sms/src/",
+            "Juling\\Snowflake\\": "snowflake/src/",
+            "Juling\\Social\\": "social/src/",
+            "Juling\\Tenant\\": "tenant/src/",
+            "Juling\\Translug\\": "/src/",
+            "Juling\\Websocket\\": "websocket/src/",
+            "Juling\\Wechat\\": "wechat/src/"
         }
     },
     "extra": {
@@ -53,9 +78,11 @@
                 "Juling\\Region\\RegionServiceProvider",
                 "Juling\\Search\\SearchServiceProvider",
                 "Juling\\Sms\\SmsServiceProvider",
+                "Juling\\Shemss\\ShemssServiceProvider",
                 "Juling\\Snowflake\\SnowflakeServiceProvider",
                 "Juling\\Social\\SocialServiceProvider",
                 "Juling\\Tenant\\TenantServiceProvider",
+                "Juling\\Translug\\TranslugServiceProvider",
                 "Juling\\Wechat\\WechatServiceProvider"
             ]
         }
