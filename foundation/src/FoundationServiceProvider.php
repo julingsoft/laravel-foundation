@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Juling\Auth;
+namespace Juling\Foundation;
 
 use Illuminate\Support\ServiceProvider;
 
-class AuthServiceProvider extends ServiceProvider
+class FoundationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any package services.
@@ -22,7 +22,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            dirname(__DIR__).'/config/config.php' => config_path('jwt.php'),
+            __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
         ]);
     }
 }

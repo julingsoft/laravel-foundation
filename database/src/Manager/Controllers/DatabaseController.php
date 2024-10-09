@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Juling\Database\Manager\Controllers;
 
+use App\API\Manager\Controllers\BaseController;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -160,7 +160,7 @@ class Captcha
         $this->color = imagecolorallocate($this->im, mt_rand(1, 150), mt_rand(1, 150), mt_rand(1, 150));
 
         // 验证码使用随机字体
-        $ttfPath = __DIR__.'/Assets/ttfs/';
+        $ttfPath = dirname(__DIR__) . '/assets/ttfs/';
 
         if (empty($this->fontttf)) {
             $dir = dir($ttfPath);
@@ -288,7 +288,7 @@ class Captcha
      */
     protected function background(): void
     {
-        $path = __DIR__.'/Assets/bgs/';
+        $path = dirname(__DIR__) . '/assets/bgs/';
         $dir = dir($path);
 
         $bgs = [];
