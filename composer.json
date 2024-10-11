@@ -43,7 +43,7 @@
             "Juling\\OperateLog\\": "operate-log/src/",
             "Juling\\Pay\\": "pay/src/",
             "Juling\\Pinyin\\": "pinyin/src/",
-            "Juling\\Protection\\": "potection/src/",
+            "Juling\\Protection\\": "protection/src/",
             "Juling\\Pusher\\": "pusher/src/",
             "Juling\\QrCode\\": "qr-code/src/",
             "Juling\\Region\\": "region/src/",
