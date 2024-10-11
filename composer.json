@@ -53,7 +53,7 @@
             "Juling\\Snowflake\\": "snowflake/src/",
             "Juling\\Social\\": "social/src/",
             "Juling\\Tenant\\": "tenant/src/",
-            "Juling\\Translug\\": "/src/",
+            "Juling\\Translug\\": "translug/src/",
             "Juling\\Websocket\\": "websocket/src/",
             "Juling\\Wechat\\": "wechat/src/"
         }
