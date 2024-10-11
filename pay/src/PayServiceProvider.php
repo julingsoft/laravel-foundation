@@ -31,7 +31,7 @@ class PayServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/config/pay.php', 'pay');
+        $this->mergeConfigFrom(dirname(__DIR__).'/config/pay.php', 'pay');
 
         Pay::config(config('pay'));
 
