@@ -20,7 +20,5 @@ class CaptchaServiceProvider extends ServiceProvider
         $this->publishes([
             dirname(__DIR__).'/config/captcha.php' => config_path('captcha.php'),
         ]);
-
-        $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
     }
 }
