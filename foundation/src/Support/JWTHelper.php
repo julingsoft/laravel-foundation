@@ -15,7 +15,7 @@ class JWTHelper
      */
     public function createToken(array $body, int $expire = 0): string
     {
-        $authentication = new Authentication();
+        $authentication = new Authentication;
 
         $payload = config('jwt.payload');
         $payload['body'] = $body;
@@ -31,9 +31,9 @@ class JWTHelper
      */
     public function getPayloadByBearer(): array
     {
-        $authentication = new Authentication();
+        $authentication = new Authentication;
 
-        $bearerTokenExtractor = new BearerTokenExtractor();
+        $bearerTokenExtractor = new BearerTokenExtractor;
         $payload = $authentication->getPayload($bearerTokenExtractor);
 
         return (array) $payload['body'] ?? [];
@@ -44,7 +44,7 @@ class JWTHelper
      */
     public function getPayloadByToken(string $token): array
     {
-        $authentication = new Authentication();
+        $authentication = new Authentication;
 
         $payload = $authentication->getPayloadByToken($token);
 

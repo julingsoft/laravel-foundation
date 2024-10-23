@@ -14,7 +14,7 @@ interface EnumMethodInterface
     /**
      * 获取枚举值
      */
-    public function getValue(): int;
+    public function getValue(): int|string;
 
     /**
      * 获取枚举描述

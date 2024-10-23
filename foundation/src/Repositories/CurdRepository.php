@@ -17,7 +17,7 @@ abstract class CurdRepository implements CurdRepositoryInterface
     /**
      * 保存给定的实体数据
      */
-    public function save(array $data): int
+    public function save(array $data): mixed
     {
         return $this->builder()->insertGetId($data);
     }
@@ -31,12 +31,12 @@ abstract class CurdRepository implements CurdRepositoryInterface
     }
 
     /**
-     * 根据实体的id检索实体
+     * 根据实体的 主键 检索实体
      */
-    public function findById(int $id): array
+    public function findById(mixed $id): array
     {
         $result = $this->builder()->find($id);
-        if ($result->isEmpty()) {
+        if (empty($result)) {
             return [];
         }
 
@@ -46,10 +46,12 @@ abstract class CurdRepository implements CurdRepositoryInterface
     /**
      * 根据条件检索实体
      */
-    public function find(array $condition = [], string $order = 'id', string $sort = 'desc'): array
+    public function find(array $condition = [], string $order = '', string $sort = 'desc'): array
     {
+        $order = empty($order) ? $this->getPrimaryKey() : $order;
+
         $result = $this->builder()->where($condition)->orderBy($order, $sort)->first();
-        if (is_null($result)) {
+        if (empty($result)) {
             return [];
         }
 
@@ -75,18 +77,22 @@ abstract class CurdRepository implements CurdRepositoryInterface
     }
 
     /**
-     * 返回具有给定id的实体是否存在
+     * 返回具有给定 主键 的实体是否存在
      */
-    public function existsById(int $id): bool
+    public function existsById(mixed $id): bool
     {
-        return $this->builder()->find($id)->exists();
+        $result = $this->builder()->find($id);
+
+        return ! empty($result);
     }
 
     /**
      * 返回该类型的所有实例
      */
-    public function findAll(array $condition = [], string $order = 'id', string $sort = 'desc'): array
+    public function findAll(array $condition = [], string $order = '', string $sort = 'desc'): array
     {
+        $order = empty($order) ? $this->getPrimaryKey() : $order;
+
         $result = $this->builder()->where($condition)->orderBy($order, $sort)->get();
         if ($result->isEmpty()) {
             return [];
@@ -96,11 +102,15 @@ abstract class CurdRepository implements CurdRepositoryInterface
     }
 
     /**
-     * 返回具有给定id类型的所有实例
+     * 返回具有给定 主键 类型的所有实例
      */
-    public function findAllByIds(array $ids, string $order = 'id', string $sort = 'desc'): array
+    public function findAllByIds(array $ids, string $order = '', string $sort = 'desc'): array
     {
-        $result = $this->builder()->whereIn('id', $ids)->orderBy($order, $sort)->get();
+        $primaryKey = $this->getPrimaryKey();
+
+        $order = empty($order) ? $primaryKey : $order;
+
+        $result = $this->builder()->whereIn($primaryKey, $ids)->orderBy($order, $sort)->get();
         if ($result->isEmpty()) {
             return [];
         }
@@ -117,11 +127,11 @@ abstract class CurdRepository implements CurdRepositoryInterface
     }
 
     /**
-     * 删除具有给定id的实体
+     * 删除具有给定 主键 的实体
      */
-    public function deleteById(int $id): bool
+    public function deleteById(mixed $id): bool
     {
-        $affectedRows = $this->builder()->find($id)->delete();
+        $affectedRows = $this->builder()->delete($id);
 
         return $affectedRows > 0;
     }
@@ -141,7 +151,7 @@ abstract class CurdRepository implements CurdRepositoryInterface
     }
 
     /**
-     * 删除具有给定id类型的所有实例
+     * 删除具有给定 主键 类型的所有实例
      */
     public function deleteAllByIds(array $ids): bool
     {
@@ -149,7 +159,9 @@ abstract class CurdRepository implements CurdRepositoryInterface
             return false;
         }
 
-        $affectedRows = $this->builder()->whereIn('id', $ids)->delete();
+        $primaryKey = $this->getPrimaryKey();
+
+        $affectedRows = $this->builder()->whereIn($primaryKey, $ids)->delete();
 
         return $affectedRows > 0;
     }
@@ -157,8 +169,10 @@ abstract class CurdRepository implements CurdRepositoryInterface
     /**
      * 分页查询
      */
-    public function page(array $condition = [], int $page = 1, int $perPage = 20, string $order = 'id', string $sort = 'desc'): array
+    public function page(array $condition = [], int $page = 1, int $perPage = 20, string $order = '', string $sort = 'desc'): array
     {
+        $order = empty($order) ? $this->getPrimaryKey() : $order;
+
         $result = $this->builder()->where($condition)->orderBy($order, $sort)->paginate($perPage, ['*'], 'page', $page);
         if ($result->isEmpty()) {
             return [];
@@ -168,11 +182,13 @@ abstract class CurdRepository implements CurdRepositoryInterface
     }
 
     /**
-     * 按ID更新数据
+     * 按 主键 更新数据
      */
-    public function updateById(array $data, int $id): int
+    public function updateById(array $data, mixed $id): int
     {
-        return $this->builder()->where('id', $id)->update($data);
+        $primaryKey = $this->getPrimaryKey();
+
+        return $this->builder()->where($primaryKey, $id)->update($data);
     }
 
     /**
@@ -185,5 +201,13 @@ abstract class CurdRepository implements CurdRepositoryInterface
         }
 
         return $this->builder()->where($condition)->update($data);
+    }
+
+    /**
+     * 获取主键名
+     */
+    public function getPrimaryKey(): string
+    {
+        return $this->model()->getKeyName();
     }
 }

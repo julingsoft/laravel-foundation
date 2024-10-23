@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Juling\Foundation\Enums;
 
 use Juling\Foundation\Contracts\EnumMethodInterface;
+use Juling\Foundation\Support\EnumMethods;
 
 /**
  * 状态

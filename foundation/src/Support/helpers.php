@@ -35,3 +35,24 @@ if (! function_exists('is_mobile')) {
         return preg_match($rule, $mobile) === 1;
     }
 }
+
+if (! function_exists('errorResponse')) {
+    function errorResponse(int $code, Throwable $e): JsonResponse
+    {
+        $data = null;
+
+        // 如果是开发环境，添加额外的错误信息
+        if (config('app.debug')) {
+            $data = [
+                'exception' => get_class($e), // 异常类名
+                'trace' => $e->getTraceAsString(), // 异常追踪信息
+            ];
+        }
+
+        return response()->json([
+            'code' => $code,
+            'message' => $e->getMessage(),
+            'data' => $data,
+        ], $code);
+    }
+}
