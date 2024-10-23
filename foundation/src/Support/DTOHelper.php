@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Juling\Foundation\Support;
 
-use Juling\Foundation\Serializer\Serializer;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Juling\Foundation\Serializer\Serializer;
 use ReflectionClass;
 use ReflectionProperty;
 use stdClass;

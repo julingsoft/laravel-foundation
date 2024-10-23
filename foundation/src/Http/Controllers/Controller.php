@@ -10,11 +10,12 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Juling\Foundation\Contracts\EnumMethodInterface;
+use Juling\Foundation\Http\Responses\JsonResponses;
 use Throwable;
 
 abstract class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests, JsonResponses, ValidatesRequests;
 
     /**
      * 模板变量

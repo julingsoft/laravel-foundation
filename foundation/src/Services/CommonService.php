@@ -6,7 +6,7 @@ namespace Juling\Foundation\Services;
 
 use Juling\Foundation\Contracts\CommonServiceInterface;
 use Juling\Foundation\Contracts\CurdRepositoryInterface;
-use Juling\Foundation\Exceptions\CustomException;
+use Juling\Foundation\Exceptions\BusinessException;
 
 /**
  * @method CurdRepositoryInterface getRepository()
@@ -48,12 +48,10 @@ abstract class CommonService implements CommonServiceInterface
 
     /**
      * 批量修改插入
-     *
-     * @throws CustomException
      */
     public function saveOrUpdateBatch(array $dataSet, int $batchSize = self::DEFAULT_BATCH_SIZE): bool
     {
-        throw new CustomException('TODO: Implement saveOrUpdateBatch() method.');
+        throw new BusinessException('TODO: Implement saveOrUpdateBatch() method.');
     }
 
     /**
@@ -110,12 +108,10 @@ abstract class CommonService implements CommonServiceInterface
 
     /**
      * 存在更新记录，否插入一条记录
-     *
-     * @throws CustomException
      */
     public function saveOrUpdate(array $entity): bool
     {
-        throw new CustomException('TODO: Implement saveOrUpdate() method.');
+        throw new BusinessException('TODO: Implement saveOrUpdate() method.');
     }
 
     /**

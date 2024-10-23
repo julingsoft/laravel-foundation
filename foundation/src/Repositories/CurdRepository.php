@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Juling\Foundation\Repositories;
 
-use Juling\Foundation\Contracts\CurdRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
+use Juling\Foundation\Contracts\CurdRepositoryInterface;
 
 /**
  * @method Builder builder() 查询构造器

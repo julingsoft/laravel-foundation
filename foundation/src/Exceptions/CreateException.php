@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Juling\Foundation\Exceptions;
 
 use Juling\Foundation\Contracts\EnumMethodInterface;
-use Juling\Foundation\Enums\CodeEnum;
+use Juling\Foundation\Enums\BusinessEnum;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateException extends CustomException
+class CreateException extends BusinessException
 {
     public function __construct(EnumMethodInterface|string|null $e = null, $code = Response::HTTP_INTERNAL_SERVER_ERROR, $previous = null)
     {
         if (is_null($e)) {
-            $enum = CodeEnum::CREATE_ERROR;
+            $enum = BusinessEnum::CREATE_ERROR;
             $e = $enum->getDescription();
             $code = $enum->getValue();
         }

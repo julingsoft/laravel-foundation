@@ -9,7 +9,7 @@ use Aliyun_Log_Models_LogItem;
 use Aliyun_Log_Models_PutLogsRequest;
 use Exception;
 use Illuminate\Support\Facades\Context;
-use Juling\Foundation\Constants\SystemConst;
+use Juling\Foundation\Constants\RequestConst;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Level;
 use Monolog\LogRecord;
@@ -57,8 +57,8 @@ class SLSHandler extends AbstractProcessingHandler
             'level' => $record['level_name'],
             'channel' => $record['channel'],
             'datetime' => $record['datetime']->format('Y-m-d H:i:s.u'),
-            'latency' => intval((microtime(true) - Context::getHidden(SystemConst::TraceTime)) * 1000), // 毫秒
-            'traceId' => Context::getHidden(SystemConst::TraceId),
+            'latency' => intval((microtime(true) - Context::getHidden(RequestConst::TraceTime)) * 1000), // 毫秒
+            'traceId' => Context::getHidden(RequestConst::TraceId),
         ]);
 
         $request = new Aliyun_Log_Models_PutLogsRequest(

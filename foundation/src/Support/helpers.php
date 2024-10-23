@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 
 if (! function_exists('mobile_mask')) {

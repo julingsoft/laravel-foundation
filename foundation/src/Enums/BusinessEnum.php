@@ -10,7 +10,7 @@ use Juling\Foundation\Support\EnumMethods;
 /**
  * 业务错误枚举
  */
-enum CodeEnum: int implements EnumMethodInterface
+enum BusinessEnum: int implements EnumMethodInterface
 {
     use EnumMethods;
 

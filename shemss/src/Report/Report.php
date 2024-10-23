@@ -1,6 +1,6 @@
 <?php
 
-namespace Esp\Report;
+namespace Juling\Shemss\Report;
 
 use Juling\Shemss\Kernel\Provider;
 use Exception;
