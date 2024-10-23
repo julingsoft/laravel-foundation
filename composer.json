@@ -16,8 +16,6 @@
         "phpoffice/phpspreadsheet": "^2.3",
         "qcloud/cos-sdk-v5": "^2.6",
         "qiniu/php-sdk": "^7.13",
-        "symfony/property-access": "^7.1",
-        "symfony/serializer": "^7.1",
         "w7corp/easywechat": "^6.15",
         "workerman/crontab": "^1.0",
         "workerman/gateway-worker": "^3.1",

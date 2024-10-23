@@ -7,7 +7,6 @@ namespace Juling\Foundation\Support;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Juling\Foundation\Serializer\Serializer;
 use ReflectionClass;
 use ReflectionProperty;
 use stdClass;
@@ -41,7 +40,11 @@ trait DTOHelper
     public function toData(bool $filterZeroVal = true): array
     {
         try {
-            $effectiveData = Serializer::normalize($this);
+            $effectiveData = [];
+            foreach ($this as $k => $v) {
+                $effectiveData[$k] = $v;
+            }
+
             if ($filterZeroVal) {
                 return $effectiveData;
             }
