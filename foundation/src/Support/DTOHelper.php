@@ -37,27 +37,27 @@ trait DTOHelper
     /**
      * 将对象转换到数组
      */
-    public function toData(bool $filterZeroVal = true): array
+    public function toData(bool $zeroValFilter = true): array
     {
         try {
-            $effectiveData = [];
+            $data = [];
             foreach ($this as $k => $v) {
-                $effectiveData[$k] = $v;
+                $data[$k] = $v;
             }
 
-            if ($filterZeroVal) {
-                return $effectiveData;
+            if ($zeroValFilter) {
+                return $data;
             }
 
             $properties = $this->getProperties();
             foreach ($properties as $item) {
-                if (isset($effectiveData[$item->getName()])) {
+                if (isset($data[$item->getName()])) {
                     continue;
                 }
-                $effectiveData[$item->getName()] = $this->getDefaultValByType($item);
+                $data[$item->getName()] = $this->getDefaultValByType($item);
             }
 
-            return $effectiveData;
+            return $data;
         } catch (Throwable $e) {
             Log::error($e);
 
@@ -68,38 +68,38 @@ trait DTOHelper
     /**
      * 获取数据表数据
      */
-    public function toEntity(bool $filterZeroVal = true): array
+    public function toEntity(bool $zeroValFilter = true): array
     {
-        $effectiveData = [];
-        foreach ($this->toData($filterZeroVal) as $key => $val) {
-            $effectiveData[Str::snake($key)] = is_array($val) ? json_encode($val, JSON_UNESCAPED_UNICODE) : $val;
+        $data = [];
+        foreach ($this->toData($zeroValFilter) as $key => $val) {
+            $data[Str::snake($key)] = is_array($val) ? json_encode($val, JSON_UNESCAPED_UNICODE) : $val;
         }
 
-        return $effectiveData;
+        return $data;
     }
 
     /**
      * 获取数组数据
      */
-    public function toArray(bool $filterZeroVal = true): array
+    public function toArray(bool $zeroValFilter = true): array
     {
-        return $this->toData($filterZeroVal);
+        return $this->toData($zeroValFilter);
     }
 
     /**
      * 获取JSON数据
      */
-    public function toJson(bool $filterZeroVal = true): string
+    public function toJson(bool $zeroValFilter = true): string
     {
-        return json_encode($this->toData($filterZeroVal), JSON_UNESCAPED_UNICODE);
+        return json_encode($this->toData($zeroValFilter), JSON_UNESCAPED_UNICODE);
     }
 
     /**
      * 获取Collection
      */
-    public function collect(bool $filterZeroVal = true): Collection
+    public function collect(bool $zeroValFilter = true): Collection
     {
-        return new Collection($this->toData($filterZeroVal));
+        return new Collection($this->toData($zeroValFilter));
     }
 
     /**
