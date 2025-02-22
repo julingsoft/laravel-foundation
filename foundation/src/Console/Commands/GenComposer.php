@@ -28,7 +28,8 @@ class GenComposer extends Command
      */
     public function handle(): void
     {
-        $this->generate(dirname(base_path()) . '/business-trip-infra', 'Flame');
+        $this->generate(dirname(base_path()) . '/infra', 'Juling');
+        $this->generate(dirname(base_path()) . '/client', 'Juling\\Client');
     }
 
     private function generate(string $modulePath, string $namespace): void

@@ -51,11 +51,13 @@ class JWT
         if (isset($config['key'])) {
             $this->key = $config['key'];
         }
-        if (isset($config['privateKey'])) {
-            $this->privateKey = $config['privateKey'];
-        }
-        if (isset($config['publicKey'])) {
-            $this->publicKey = $config['publicKey'];
+        if (in_array($this->algorithm, [self::ALGORITHM_RS256, self::ALGORITHM_RS384, self::ALGORITHM_RS512])) {
+            if (! empty($config['privateKey'])) {
+                $this->privateKey = $this->getPrivateKey($config['privateKey']);
+            }
+            if (! empty($config['publicKey'])) {
+                $this->publicKey = $this->getPublicKey($config['publicKey']);
+            }
         }
     }
 
@@ -81,5 +83,27 @@ class JWT
             self::ALGORITHM_RS256, self::ALGORITHM_RS384, self::ALGORITHM_RS512 => \Firebase\JWT\JWT::encode($payload, $this->privateKey, $this->algorithm),
             default => throw new \InvalidArgumentException('Invalid signature algorithm.'),
         };
+    }
+
+    private function getPrivateKey(string $privateKey): string
+    {
+        $privateKeyContent = file_get_contents($privateKey);
+
+        if (stripos($privateKeyContent, 'BEGIN RSA PRIVATE KEY') === false) {
+            $privateKeyContent = "-----BEGIN RSA PRIVATE KEY-----\n".$privateKeyContent."\n-----END RSA PRIVATE KEY-----";
+        }
+
+        return $privateKeyContent;
+    }
+
+    private function getPublicKey(string $publicKey): string
+    {
+        $publicKeyContent = file_get_contents($publicKey);
+
+        if (stripos($publicKeyContent, 'BEGIN PUBLIC KEY') === false) {
+            $publicKeyContent = "-----BEGIN PUBLIC KEY-----\n".$publicKeyContent."\n-----END PUBLIC KEY-----";
+        }
+
+        return $publicKeyContent;
     }
 }

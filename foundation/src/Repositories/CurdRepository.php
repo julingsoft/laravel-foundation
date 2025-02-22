@@ -98,7 +98,12 @@ abstract class CurdRepository implements CurdRepositoryInterface
             return [];
         }
 
-        return $result->toArray();
+        $data = [];
+        foreach ($result->toArray() as $item) {
+            $data[] = collect($item)->toArray();
+        }
+
+        return $data;
     }
 
     /**
@@ -115,7 +120,12 @@ abstract class CurdRepository implements CurdRepositoryInterface
             return [];
         }
 
-        return $result->toArray();
+        $data = [];
+        foreach ($result->toArray() as $item) {
+            $data[] = collect($item)->toArray();
+        }
+
+        return $data;
     }
 
     /**
@@ -178,7 +188,12 @@ abstract class CurdRepository implements CurdRepositoryInterface
             return [];
         }
 
-        return $result->toArray();
+        $data = $result->toArray();
+        foreach ($data['data'] as $key => $item) {
+            $data['data'][$key] = collect($item)->toArray();
+        }
+
+        return $data;
     }
 
     /**
