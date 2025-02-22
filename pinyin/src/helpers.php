@@ -12,7 +12,7 @@ if (!function_exists('pinyin')) {
      *
      * @return string
      */
-    function pinyin($string, $option = Pinyin::NONE)
+    function pinyin($string, $option = null)
     {
         return app(Pinyin::class)->convert($string, $option);
     }

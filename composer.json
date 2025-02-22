@@ -56,7 +56,11 @@
             "Juling\\Translug\\": "translug/src/",
             "Juling\\Websocket\\": "websocket/src/",
             "Juling\\Wechat\\": "wechat/src/"
-        }
+        },
+        "files": [
+            "foundation/src/Support/helpers.php",
+            "pinyin/src/helpers.php"
+        ]
     },
     "extra": {
         "laravel": {
