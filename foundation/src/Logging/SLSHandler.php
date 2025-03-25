@@ -8,6 +8,7 @@ use Aliyun_Log_Client;
 use Aliyun_Log_Models_LogItem;
 use Aliyun_Log_Models_PutLogsRequest;
 use Exception;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Context;
 use Juling\Foundation\Constants\RequestConst;
 use Monolog\Handler\AbstractProcessingHandler;
@@ -47,19 +48,23 @@ class SLSHandler extends AbstractProcessingHandler
      */
     protected function write(LogRecord $record): void
     {
-        $request = request();
-        $logItem = new Aliyun_Log_Models_LogItem;
-        $logItem->setContents([
-            'url' => $request->fullUrl(),
-            'request' => json_encode($request->all(), JSON_UNESCAPED_UNICODE),
-            'message' => $record['formatted'] ?? $record['message'],
-            'context' => json_encode($record['context'], JSON_UNESCAPED_UNICODE),
-            'level' => $record['level_name'],
-            'channel' => $record['channel'],
-            'datetime' => $record['datetime']->format('Y-m-d H:i:s.u'),
-            'latency' => intval((microtime(true) - Context::getHidden(RequestConst::TraceTime)) * 1000), // 毫秒
-            'traceId' => Context::getHidden(RequestConst::TraceId),
+        $contents = array_merge($record->toArray(), [
+            'context' => json_encode($record->context, JSON_UNESCAPED_UNICODE),
+            'datetime' => $record->datetime->format('Y-m-d H:i:s.u'),
+            'extra' => json_encode($record->extra, JSON_UNESCAPED_UNICODE),
         ]);
+
+        if (! App::runningInConsole()) {
+            $contents = array_merge($contents, [
+                'url' => request()->fullUrl(),
+                'request' => json_encode(request()->all(), JSON_UNESCAPED_UNICODE),
+                'latency' => intval((microtime(true) - Context::getHidden(RequestConst::TraceTime)) * 1000), // 毫秒
+                'traceId' => Context::getHidden(RequestConst::TraceId),
+            ]);
+        }
+
+        $logItem = new Aliyun_Log_Models_LogItem;
+        $logItem->setContents($contents);
 
         $request = new Aliyun_Log_Models_PutLogsRequest(
             $this->project,
