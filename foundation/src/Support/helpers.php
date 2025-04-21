@@ -37,8 +37,8 @@ if (! function_exists('is_mobile')) {
     }
 }
 
-if (! function_exists('errorResponse')) {
-    function errorResponse(int $code, Throwable $e): JsonResponse
+if (! function_exists('error_response')) {
+    function error_response(int $code, Throwable $e): JsonResponse
     {
         $data = null;
 
