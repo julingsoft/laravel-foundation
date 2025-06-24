@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Juling\Captcha\Enums;
 
 use Juling\Foundation\Contracts\EnumMethodInterface;
-use Juling\Foundation\Enums\EnumMethods;
+use Juling\Foundation\Support\EnumMethods;
 
 enum CaptchaErrorEnum: int implements EnumMethodInterface
 {

@@ -35,7 +35,9 @@ abstract class CurdRepository implements CurdRepositoryInterface
      */
     public function findById(mixed $id): array
     {
-        $result = $this->builder()->find($id);
+        $primaryKey = $this->getPrimaryKey();
+
+        $result = $this->builder()->where($primaryKey, $id)->first();
         if (empty($result)) {
             return [];
         }
@@ -81,9 +83,9 @@ abstract class CurdRepository implements CurdRepositoryInterface
      */
     public function existsById(mixed $id): bool
     {
-        $result = $this->builder()->find($id);
+        $primaryKey = $this->getPrimaryKey();
 
-        return ! empty($result);
+        return $this->builder()->where($primaryKey, $id)->exists();
     }
 
     /**
@@ -141,7 +143,9 @@ abstract class CurdRepository implements CurdRepositoryInterface
      */
     public function deleteById(mixed $id): bool
     {
-        $affectedRows = $this->builder()->delete($id);
+        $primaryKey = $this->getPrimaryKey();
+
+        $affectedRows = $this->builder()->where($primaryKey, $id)->delete();
 
         return $affectedRows > 0;
     }

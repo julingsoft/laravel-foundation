@@ -21,7 +21,7 @@ class AnnotationHelper
             $docComment = $case->getDocComment();
             preg_match('/\/\*\*\n.+\*(.+)\n/', $docComment, $matches);
             $list[] = [
-                'name' => $matches[1] ? trim($matches[1]) : '',
+                'name' => isset($matches[1]) ? trim($matches[1]) : '',
                 'val' => $case->getValue(),
             ];
         }

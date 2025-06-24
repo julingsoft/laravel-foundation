@@ -6,7 +6,6 @@ namespace Juling\Captcha;
 
 use Exception;
 use GdImage;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 
 class Captcha

@@ -12,10 +12,17 @@ class CaptchaService
     /**
      * @throws Exception
      */
-    public function getCaptcha(string $uuid): string
+    public function create(string $uuid): string
     {
         $captcha = new Captcha();
 
         return $captcha->create($uuid);
+    }
+
+    public function check(string $uuid, string $code): bool
+    {
+        $captcha = new Captcha();
+
+        return $captcha->check($uuid, $code);
     }
 }

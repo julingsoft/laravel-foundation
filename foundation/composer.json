@@ -2,10 +2,9 @@
     "name": "juling/laravel-foundation",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "juling/laravel-auth": "^1.0",
         "juling/laravel-captcha": "^1.0",
-        "juling/laravel-data-permission": "^1.0",
         "juling/laravel-database": "^1.0",
         "juling/laravel-excel": "^1.0",
         "juling/laravel-filesystem": "^1.0",
@@ -13,7 +12,6 @@
         "juling/laravel-image": "^1.0",
         "juling/laravel-ip": "^1.0",
         "juling/laravel-monitor": "^1.0",
-        "juling/laravel-operate-log": "^1.0",
         "juling/laravel-pay": "^1.0",
         "juling/laravel-pinyin": "^1.0",
         "juling/laravel-protection": "^1.0",
@@ -24,7 +22,7 @@
         "juling/laravel-tenant": "^1.0",
         "juling/laravel-websocket": "^1.0",
         "juling/laravel-wechat": "^1.0",
-        "laravel/framework": "^11.0"
+        "laravel/framework": "^12.0"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
