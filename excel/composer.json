@@ -2,9 +2,9 @@
     "name": "juling/laravel-excel",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "laravel/framework": "^12.0",
-        "phpoffice/phpspreadsheet": "^2.0"
+        "phpoffice/phpspreadsheet": "^5.3"
     },
     "require-dev": {
         "laravel/pint": "^1.14",

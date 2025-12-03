@@ -2,7 +2,7 @@
     "name": "juling/laravel-foundation",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "alibabacloud/aliyun-log-php-sdk": "^0.6.7",
         "aliyuncs/oss-sdk-php": "^2.7",
         "endroid/qr-code": "^6.0",
@@ -14,7 +14,7 @@
         "overtrue/easy-sms": "^3.0",
         "overtrue/pinyin": "^5.3",
         "overtrue/socialite": "^4.11",
-        "phpoffice/phpspreadsheet": "^4.0",
+        "phpoffice/phpspreadsheet": "^5.3",
         "qcloud/cos-sdk-v5": "^2.6",
         "qiniu/php-sdk": "^7.14",
         "w7corp/easywechat": "^6.17",

@@ -2,7 +2,7 @@
     "name": "juling/laravel-search",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^12.0",
         "meilisearch/meilisearch-php": "^1.7"

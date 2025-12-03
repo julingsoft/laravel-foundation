@@ -2,7 +2,7 @@
     "name": "juling/laravel-auth",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "firebase/php-jwt": "^6.10",
         "laravel/framework": "^12.0"
     },

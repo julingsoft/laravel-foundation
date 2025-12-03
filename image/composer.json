@@ -2,7 +2,7 @@
     "name": "juling/laravel-image",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "intervention/image": "^3.5",
         "laravel/framework": "^12.0"
     },

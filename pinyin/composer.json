@@ -2,7 +2,7 @@
     "name": "juling/laravel-pinyin",
     "license": "Apache-2.0",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "overtrue/laravel-pinyin": "^5.1",
         "laravel/framework": "^12.0"
     },
