@@ -3,29 +3,28 @@
     "license": "Apache-2.0",
     "require": {
         "php": "^8.4",
-        "alibabacloud/aliyun-log-php-sdk": "^0.6.7",
+        "alibabacloud/aliyun-log-php-sdk": "^0.6.8",
         "aliyuncs/oss-sdk-php": "^2.7",
-        "endroid/qr-code": "^6.0",
-        "elasticsearch/elasticsearch": "^8.17",
-        "firebase/php-jwt": "^6.11",
+        "endroid/qr-code": "^6.1",
+        "elasticsearch/elasticsearch": "^8.19",
+        "firebase/php-jwt": "^7.0",
         "intervention/image": "^3.11",
         "laravel/framework": "^12.0",
-        "laravel/scout": "^10.13",
-        "overtrue/easy-sms": "^3.0",
-        "overtrue/pinyin": "^5.3",
-        "overtrue/socialite": "^4.11",
-        "phpoffice/phpspreadsheet": "^5.3",
+        "laravel/scout": "^10.24",
+        "overtrue/easy-sms": "^3.3",
+        "overtrue/pinyin": "^6.0",
+        "overtrue/socialite": "^4.13",
+        "phpoffice/phpspreadsheet": "^5.4",
         "qcloud/cos-sdk-v5": "^2.6",
-        "qiniu/php-sdk": "^7.14",
-        "w7corp/easywechat": "^6.17",
+        "w7corp/easywechat": "^6.19",
         "workerman/crontab": "^1.0",
         "workerman/gateway-worker": "^4.0",
         "yansongda/pay": "^3.7"
     },
     "require-dev": {
-        "laravel/pint": "^1.21",
+        "laravel/pint": "^1.27",
         "phpstan/phpstan": "^2.1",
-        "zircote/swagger-php": "^5.0"
+        "zircote/swagger-php": "^6.0"
     },
     "autoload": {
         "psr-4": {
